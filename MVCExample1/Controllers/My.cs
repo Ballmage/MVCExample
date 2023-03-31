@@ -13,7 +13,7 @@ namespace MVCExample1.Controllers
     {
 
 
-        private readonly ValuesHolder _holder;
+        private  ValuesHolder _holder;
         public MyController(ValuesHolder holder)
         {
             _holder = holder;
@@ -47,7 +47,8 @@ namespace MVCExample1.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete([FromQuery] DateTime date1, [FromQuery] DateTime date2)
         {
-            _holder.DelBtw(date1, date2);
+            
+            _holder.DelBtw(date1, date2,ref _holder);
             return Ok(_holder.Values);
 
 

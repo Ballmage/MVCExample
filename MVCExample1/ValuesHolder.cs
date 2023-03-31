@@ -10,8 +10,8 @@ namespace MVCExample1
     public class ValuesHolder
     {
 
-        int a, b, c;
-        public Dictionary<DateTime, int> Values = new Dictionary<DateTime, int>()
+        int a, b;
+        public Dictionary<DateTime, int?> Values = new Dictionary<DateTime, int?>()
         {
             [new DateTime(2015, 5, 18)] = 35,
             [new DateTime(2015, 5, 19)] = 36,
@@ -54,12 +54,12 @@ namespace MVCExample1
 
             return temp.ToString();
         }
-        public void DelBtw(DateTime datefrom, DateTime dateto)
+        public void DelBtw(DateTime datefrom, DateTime dateto,ref ValuesHolder classv)
         {
 
 
-            DateTime[] arrdate = new DateTime[Values.Count];
-            Values.Keys.CopyTo(arrdate, 0);
+            DateTime[] arrdate = new DateTime[classv.Values.Count];
+            classv.Values.Keys.CopyTo(arrdate, 0);
 
 
 
@@ -83,7 +83,7 @@ namespace MVCExample1
 
             for (int i = a + 1; i < b; i++)
             {
-                Values.Remove(arrdate[i]);
+                classv.Values[arrdate[i]] =null;
             }
 
 
